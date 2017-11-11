@@ -16,6 +16,9 @@ class CreateLivingroomDatasTable extends Migration
         Schema::create('livingroom_datas', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->integer('temperature')->unsigned(); // unsigned forces the value to be +ve
+            $table->integer('light')->unsigned();
+            $table->string('timeString');
         });
     }
 
