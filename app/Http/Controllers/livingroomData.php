@@ -7,6 +7,10 @@ use DB;
 
 class livingroomData extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         return DB::select('select * from livingroom_datas');

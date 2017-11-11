@@ -1,10 +1,10 @@
-This project will register a user and allow them to consume data through an API using Laravel and Passport.
+This project will register a user and allow them to consume data through an API using Laravel.
 
 Locally developed using Homestead.
 
 Could this be hosted on Heroku? (a lot of env vars to set!)
 
-#Setup
+# Setup
 Following https://laravel.com/docs/5.5 :heart:
 - $ laravel new <project name>
 - In my Homestead dir, modify Homestead.yaml so the vagrant box will serve my project directory and my db will be created
@@ -17,9 +17,7 @@ Following https://laravel.com/docs/5.5 :heart:
 - > cd to my project dir
 - > $ php artisan migrate # This adds the users table from project/database/migrations. Docs say this should be done from within the box but not sure why... The DB port number in .env needs to be multiplied by 10 to connect to the DB from my local machine; is this why?
 
-#Adding a new endpoint
-Following https://www.youtube.com/watch?v=0FsCplBR2uM&list=PLcgHShdyCyBPxl6nFm034mSQifYgZi5HC and https://laravel.com/docs/5.5/passport :heart:
-- Follow the Laravel 5.5 docs until the front end section
+# Adding a new endpoint
 - $ php artisan make:model livingroomData -m
 - $ php artisan make:controller livingroomData
 - In the livingroomData model, app/livingroomData.php, add member to livingroomData class: "protected $table = 'livingroom_datas';
@@ -34,4 +32,20 @@ Following https://www.youtube.com/watch?v=0FsCplBR2uM&list=PLcgHShdyCyBPxl6nFm03
 
 Also added a /showusers endpoint
 
-#Authenticated API
+To enable auth on endpoints:
+- Add to the controller class:
+>     public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+# Authenticated API
+These endpoints were added to routes/web.php instead of routes/api.php. They need the user to be authenticated.
+
+My original plan had been to use Passport to authenticate these endpoints following https://www.youtube.com/watch?v=0FsCplBR2uM&list=PLcgHShdyCyBPxl6nFm034mSQifYgZi5HC and https://laravel.com/docs/5.5/passport
+
+As far as I can see, you can't have API endpoints in the app/Http/Controllers directory, which is exactly where I put them!
+
+The correct way to structure this would have been to have made a WebControllers and ApiControllers directory and placed my controllers there.
+
+web.php and api.php then have Route::groups added to namespace the requests and PAssport could be used for the API requests.
