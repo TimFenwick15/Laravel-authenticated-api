@@ -21,8 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/showusers', 'HomeController@show')->name('showusers');
 
-Route::get('/livingroomdatapage', 'livingroomData@page')->name('livingroomdatapage');
-Route::get('/livingroomdata', 'livingroomData@index')->name('livingroomdata');
-
-// Testing vendor views
-Route::get('/userlist', 'HomeController@userList');
+Route::get('/livingroomdatapage', 'livingroomData@page')->name('livingroomdata');
+Route::get('/livingroomdata', 'livingroomData@index');

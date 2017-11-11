@@ -1,0 +1,25 @@
+table {
+    font-size: 36px;
+}
+th {
+    padding-right: 10px;
+}
+.container {
+    width: 100%;
+}
+.center {
+    margin: auto;
+}
+.pagination {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+li {
+    display: inline-block;
+    padding-right: 10px;
+}
+td {
+    padding: 10px;
+}
+  

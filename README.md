@@ -62,3 +62,4 @@ web.php and api.php then have Route::groups added to namespace the requests and 
 
 https://laravel.com/docs/5.5/pagination
 You may also convert a paginator instance to JSON by simply returning it from a route or controller action:
+
