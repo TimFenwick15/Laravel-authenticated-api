@@ -30,4 +30,12 @@ class HomeController extends Controller
     {
         return DB::select('select * from users');
     }
+
+    // Testing Vendor views
+    public function userlist()
+    {
+        //$users = DB::table('users')->simplePaginate(5);
+        $users = DB::table('users')->paginate(5);
+        return view('userlist', ['users' => $users]);
+    }
 }

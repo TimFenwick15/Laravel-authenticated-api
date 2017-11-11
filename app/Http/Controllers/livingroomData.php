@@ -11,6 +11,10 @@ class livingroomData extends Controller
     {
         $this->middleware('auth');
     }
+    public function page()
+    {
+        return view('livingroomData');
+    }
     public function index()
     {
         return DB::select('select * from livingroom_datas');
