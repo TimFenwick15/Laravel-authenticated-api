@@ -57,7 +57,7 @@ web.php and api.php then have Route::groups added to namespace the requests and 
 ## Learns
 - Include "Controller" in controller names
 - Useful imports (in case I need them again)
-  - use Log;
+  - use Log; # Log::info('message');
   - use Illuminate\Pagination\Paginator;
 
 https://laravel.com/docs/5.5/pagination

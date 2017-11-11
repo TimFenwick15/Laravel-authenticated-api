@@ -8352,10 +8352,13 @@ button.close {
 
 table {
   font-size: 36px;
+  table-layout: fixed;
+  width: 80%;
 }
 
-th {
-  padding-right: 10px;
+th,
+td {
+  width: 20%;
 }
 
 .container {
