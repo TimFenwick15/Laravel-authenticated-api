@@ -12,7 +12,7 @@
       </tr>
     </table>
     @else
-      This user has no device connected
+      <h1>This user has no device connected</h1>
     @endif
   </div>
 @endsection

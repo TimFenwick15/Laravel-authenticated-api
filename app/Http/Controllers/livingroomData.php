@@ -15,32 +15,17 @@ class livingroomData extends Controller
     }
     public function page()
     {
-        $data = array();
+        $data = array( 'status' => false );
         $user = Auth::user();
         if ($user['deviceUrl']) {
-            try {
-                //$json = json_decode(file_get_contents(env('LIVINGROOM_DATA_SOURCE')), true);
-                $data = json_decode(file_get_contents($user['deviceUrl']), true);
+            $dataRequest = @file_get_contents($user['deviceUrl']);
+            if ($dataRequest && strpos($http_response_header[0], '200')) {
+                $data = json_decode($dataRequest, true);
                 $data['status'] = true;
-                //$json['status'] = true;
             }
-            catch (Exception $e) {
-                $data = array(
-                    'status' => false
-                );
-            }
-        }
-        else {
-            $data['status'] = false;
         }
         return view(
             'livingroomData',
-            /*[
-                'temperature' => $json['temperature'],
-                'light' => $json['light'],
-                'time' => $json['time'],
-                'status' => $json['status']
-            ]*/
             ['data' => $data]
         );
     }
