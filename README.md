@@ -1,3 +1,5 @@
+http://stark-thicket-42817.herokuapp.com/
+
 This project will register a user and allow them to consume data through an API using Laravel.
 
 Locally developed using Homestead.
@@ -53,6 +55,19 @@ As far as I can see, you can't have API endpoints in the app/Http/Controllers di
 The correct way to structure this would have been to have made a WebControllers and ApiControllers directory and placed my controllers there.
 
 web.php and api.php then have Route::groups added to namespace the requests and PAssport could be used for the API requests.
+
+## Putting this on Heroku
+- $ heroku create # from local project root dir
+- echo web: vendor/bin/heroku-php-apache2 public/ > Procfile # Procfile tells Heroku how to start your app
+- Commit this
+- $ git push heroku master
+- $ heroku addons:create cleardb:ignite # This lets you use MYSQL on Heroku which isn't supplied by default. You need a credit card on your account :cry: But once you do, ClearDB has a free tier
+- $ heroku config # Look for the ClearDB URL in the form **username**:**password**@**url**/**db name**?reconnect=true
+  - Use these values along with environment variables set in .env in the "$ $heroku config:set" command to set any necessary environment variables on the Heroku dyno
+  - More info at https://www.cleardb.com/dashboard
+- $ heroku run bash
+  - $ php artisan migrate
+- $ heroku open
 
 ## Learns
 - Include "Controller" in controller names
