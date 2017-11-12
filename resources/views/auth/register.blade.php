@@ -62,6 +62,14 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="device-url" class="col-md-4 control-label">Device URL</label>
+
+                            <div class="col-md-6">
+                                <input id="device-url" class="form-control" name="device_url">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Register
